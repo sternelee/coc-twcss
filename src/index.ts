@@ -32,21 +32,26 @@ export async function activate(context: ExtensionContext): Promise<void> {
     sources.createSource({
       name: 'coc-twcss', // unique id
       triggerCharacters: [],
-      shouldComplete: async (opt) => {
+      // shouldComplete: async (opt) => {
+      //   const { linenr, col, input, line } = opt
+      //   const buf = Buffer.from(line, 'utf8');
+      //   const pre = buf.slice(0, col - 1).toString('utf8');
+      //   // let after = buf.slice(col + input.length).toString('utf8');
+      //   // TODO: 只支持windicss这种class内的填写
+      //   // const hasItems = /<[^<]*?class="[^"]*?\s$/g.test(pre);
+      //   // TODO：同时支持twind
+      //   // const hasItems = /<[^<]*?class="[^"]*?\s$/g.test(pre) || /tw\`/gi.test(pre);
+      //   // 支持在unocss下的通用
+      //   const hasItems = /<[^<]*?\s$/g.test(pre);
+      //   window.showMessage('coc-twcc: ' + pre + ' -> ' + hasItems);
+      //   return hasItems;
+      // },
+      doComplete: async (opt) => {
         const { linenr, col, input, line } = opt
         const buf = Buffer.from(line, 'utf8');
         const pre = buf.slice(0, col - 1).toString('utf8');
-        // let after = buf.slice(col + input.length).toString('utf8');
-        // TODO: 只支持windicss这种class内的填写
-        // const hasItems = /<[^<]*?class="[^"]*?\s$/g.test(pre);
-        // TODO：同时支持twind
-        // const hasItems = /<[^<]*?class="[^"]*?\s$/g.test(pre) || /tw\`/gi.test(pre);
-        // 支持在unocss下的通用
         const hasItems = /<[^<]*?\s$/g.test(pre);
-        window.showMessage('coc-twcc: ' + pre + ' -> ' + hasItems);
-        return hasItems;
-      },
-      doComplete: async () => {
+        if (!hasItems) return null
         const items = await getCompletionItems();
         return items;
       },
