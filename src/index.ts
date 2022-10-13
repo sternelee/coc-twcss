@@ -33,7 +33,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
         const buf = Buffer.from(line, 'utf8');
         const pre = buf.slice(0, col - 1).toString('utf8');
         // let after = buf.slice(col + input.length).toString('utf8');
-        return /<[^<]*?\s$/g.test(pre);
+        const hasItems = /<[^<]*?\s$/g.test(pre);
+        window.showMessage(`code: ${pre} is: ${hasItems}`)
+        return hasItems;
       },
       doComplete: async () => {
         const items = await getCompletionItems();
@@ -62,7 +64,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
 async function getCompletionItems(): Promise<CompleteResult> {
   return {
-    items: twcssItems.map((t: any) => ({ word: t.character, info: t.description, menu: '[Twcss]', kind: '⚡︎' })),
+    items: twcssItems.map((t: any) => ({ word: t.character, info: t.description, menu: '[coc-twcss]', kind: 'TW' })),
     // items: [
     //   {
     //     word: 'TestCompletionItem 1',
