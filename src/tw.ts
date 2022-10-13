@@ -1,32 +1,4 @@
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-
-// src/index.ts
-var src_exports = {};
-__export(src_exports, {
-  activate: () => activate
-});
-module.exports = __toCommonJS(src_exports);
-var import_coc = require("coc.nvim");
-
-// src/tw.ts
-var items = {
+ const items = {
   "break-before-auto": "break-before: auto;",
   "break-before-avoid": "break-before: avoid;",
   "break-before-all": "break-before: all;",
@@ -293,9 +265,9 @@ var items = {
   "leading-normal": "line-height: 1.5;",
   "leading-relaxed": "line-height: 1.625;",
   "leading-loose": "line-height: 2;",
-  "font-sans": 'font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
-  "font-serif": 'font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;',
-  "font-mono": 'font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;',
+  "font-sans": "font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";",
+  "font-serif": "font-family: ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif;",
+  "font-mono": "font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;",
   "decoration-auto": "text-decoration-thickness: auto;",
   "decoration-from-font": "text-decoration-thickness: from-font;",
   "decoration-0": "text-decoration-thickness: 0px;",
@@ -7898,30 +7870,6 @@ var items = {
   "border-l-rose-700": "border-left-color: rgb(190 18 60);",
   "border-l-rose-800": "border-left-color: rgb(159 18 57);",
   "border-l-rose-900": "border-left-color: rgb(136 19 55);"
-};
-var twcssItems = items;
+}
 
-// src/index.ts
-var items2 = Object.keys(twcssItems).map((k) => ({ word: k, info: twcssItems[k], menu: "[coc-twcss]", kind: "TW" }));
-async function activate(context) {
-  import_coc.window.showMessage(`coc-twcss works!`);
-  context.subscriptions.push(
-    import_coc.sources.createSource({
-      name: "coc-twcss",
-      doComplete: async () => {
-        const items3 = await getCompletionItems();
-        return items3;
-      }
-    })
-  );
-}
-async function getCompletionItems() {
-  return {
-    priority: 1024,
-    items: items2
-  };
-}
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  activate
-});
+export const twcssItems = items
