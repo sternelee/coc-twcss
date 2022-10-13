@@ -47,11 +47,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
       //   return hasItems;
       // },
       doComplete: async (opt) => {
-        const { linenr, col, input, line } = opt
-        const buf = Buffer.from(line, 'utf8');
-        const pre = buf.slice(0, col - 1).toString('utf8');
-        const hasItems = /<[^<]*?\s$/g.test(pre);
-        if (!hasItems) return null
+        // const { linenr, col, input, line } = opt
+        // const buf = Buffer.from(line, 'utf8');
+        // const pre = buf.slice(0, col - 1).toString('utf8');
+        // const hasItems = /<[^<]*?\s$/g.test(pre);
+        // if (!hasItems) return null
         const items = await getCompletionItems();
         return items;
       },
