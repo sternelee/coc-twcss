@@ -31,6 +31,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     sources.createSource({
       name: 'coc-twcss', // unique id
+      triggerCharacters: [],
       // shouldComplete: async (opt) => {
       //   const { linenr, col, input, line } = opt
       //   const buf = Buffer.from(line, 'utf8');
