@@ -1,6 +1,6 @@
 {
   "name": "coc-twcss",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "coc.nvim for tailwindcss, windicss, unocss",
   "author": "sternelee <sternelee@gmail.com>",
   "license": "MIT",
@@ -58,6 +58,7 @@
     ]
   },
   "dependencies": {
-    "@types/node": "^18.8.5"
+    "@types/node": "^18.8.5",
+    "fast-glob": "^3.2.12"
   }
 }

@@ -1,12 +1,13 @@
 import { commands, CompleteResult, ExtensionContext, listManager, sources, window, workspace } from 'coc.nvim';
+// import fg from 'fast-glob';
 import { twcssItems } from './tw';
 // import fs from 'fs';
 // import path from 'path';
 // import DemoList from './lists';
 
-// const twcssItems: any[] = [];
+// const CONFIG_FILE_GLOB = '{tailwind,tailwind.config,windicss.config,unocss.config}.{js,ts,cjs}';
 
-const items = Object.keys(twcssItems).map((k) => ({ word: k, info: twcssItems[k], kind: 'TW' }));
+const items = Object.keys(twcssItems).map((k) => ({ word: k, abbr: `${k} ${twcssItems[k]}`, filterText: twcssItems[k], kind: 'TW' }));
 
 export async function activate(context: ExtensionContext): Promise<void> {
   window.showMessage(`coc-twcss works!`);
@@ -47,11 +48,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
       //   return hasItems;
       // },
       doComplete: async (opt) => {
-        // const { linenr, col, input, line } = opt
-        // const buf = Buffer.from(line, 'utf8');
-        // const pre = buf.slice(0, col - 1).toString('utf8');
-        // const hasItems = /<[^<]*?\s$/g.test(pre);
-        // if (!hasItems) return null
+        const { linenr, col, input, line } = opt
+        const buf = Buffer.from(line, 'utf8');
+        const pre = buf.slice(0, col).toString('utf8');
+        const hasItems = /<[^<]*?[\s|"]$/g.test(pre);
+        if (!hasItems) return null
         const items = await getCompletionItems();
         return items;
       },
