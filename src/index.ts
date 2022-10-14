@@ -7,7 +7,7 @@ import { twcssItems } from './tw';
 
 // const CONFIG_FILE_GLOB = '{tailwind,tailwind.config,windicss.config,unocss.config}.{js,ts,cjs}';
 
-const items = Object.keys(twcssItems).map((k) => ({ word: k, abbr: `${k} ${twcssItems[k]}`, filterText: twcssItems[k], kind: 'TW' }));
+const items = Object.keys(twcssItems).map((k) => ({ word: k, info: twcssItems[k], kind: 'TW' }));
 
 export async function activate(context: ExtensionContext): Promise<void> {
   window.showMessage(`coc-twcss works!`);

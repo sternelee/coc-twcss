@@ -1,6 +1,6 @@
 {
   "name": "coc-twcss",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "coc.nvim for tailwindcss, windicss, unocss",
   "author": "sternelee <sternelee@gmail.com>",
   "license": "MIT",
