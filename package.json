@@ -1,12 +1,16 @@
 {
   "name": "coc-twcss",
-  "version": "0.0.8",
-  "description": "coc.nvim for tailwindcss, windicss, unocss",
+  "version": "0.0.9",
+  "description": "coc.nvim for tailwindcss, windicss, twind, unocss",
   "author": "sternelee <sternelee@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
   "keywords": [
-    "coc.nvim"
+    "coc.nvim",
+    "tailwindcss",
+    "windicss",
+    "twind",
+    "unocss"
   ],
   "engines": {
     "coc": "^0.0.80"
@@ -45,17 +49,21 @@
       "properties": {
         "coc-twcss.enabled": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Enable coc-twcss extension"
+        },
+        "coc-twcss.twind": {
+          "type": "boolean",
+          "default": false,
+          "description": "support twind"
+        },
+        "coc-twcss.unocss": {
+          "type": "boolean",
+          "default": false,
+          "description": "support unocss"
         }
       }
-    },
-    "commands": [
-      {
-        "command": "coc-twcss.Command",
-        "title": "coc-twcss command title"
-      }
-    ]
+    }
   },
   "dependencies": {
     "@types/node": "^18.8.5",
