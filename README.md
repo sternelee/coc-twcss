@@ -4,7 +4,7 @@
 
 ## Install
 
-`:CocInstall coc-twcss`
+`:CocInstall https://github.com/sternelee/coc-twcss`
 
 ## 配置开启
 
