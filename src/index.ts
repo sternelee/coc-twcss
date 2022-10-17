@@ -4,7 +4,7 @@ import { twcssItems } from './tw';
 // import fs from 'fs';
 // import path from 'path';
 
-const items = Object.keys(twcssItems).map((k) => ({ word: k, info: twcssItems[k], kind: 'TW' }));
+const items = Object.keys(twcssItems).map((k) => ({ word: k, info: `.${k}:{\n  ${twcssItems[k]}\n}`, kind: 'TW' }));
 
 let isTwind = false;
 let isUnoCSS = false;
@@ -34,14 +34,20 @@ export async function activate(context: ExtensionContext): Promise<void> {
         return hasItems;
       },
       doComplete: async () => {
-        let items = await getCompletionItems();
+        let completeResult = await getCompletionItems();
         if (isTwind) {
-          items = items.map((v) => ({ ...v, info: `Twind: \n ${v.info}` }));
+          completeResult = {
+            ...completeResult,
+            items: completeResult.items.map((v) => ({ ...v, info: `Twind\n${v.info}` })),
+          };
         }
         if (isUnoCSS) {
-          items = items.map((v) => ({ ...v, info: `UnoCSS: \n ${v.inf}` }));
+          completeResult = {
+            ...completeResult,
+            items: completeResult.items.map((v) => ({ ...v, info: `UnoCSS\n${v.info}` })),
+          };
         }
-        return items;
+        return completeResult;
       },
     })
   );
