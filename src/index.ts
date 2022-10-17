@@ -10,7 +10,7 @@ let isTwind = false;
 let isUnoCSS = false;
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  const isEnabled = workspace.getConfiguration('coc-twcss').get<boolean>('enabled', false);
+  const isEnabled = workspace.getConfiguration('coc-twcss').get<boolean>('enable', false);
   isTwind = workspace.getConfiguration('coc-twcss').get<boolean>('twind', false);
   isUnoCSS = workspace.getConfiguration('coc-twcss').get<boolean>('unocss', false);
   if (!isEnabled) return;

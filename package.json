@@ -1,6 +1,6 @@
 {
   "name": "coc-twcss",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "coc.nvim for tailwindcss, windicss, twind, unocss",
   "author": "sternelee <sternelee@gmail.com>",
   "license": "MIT",
@@ -47,7 +47,7 @@
       "type": "object",
       "title": "coc-twcss configuration",
       "properties": {
-        "coc-twcss.enabled": {
+        "coc-twcss.enable": {
           "type": "boolean",
           "default": false,
           "description": "Enable coc-twcss extension"
